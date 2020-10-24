@@ -1,7 +1,7 @@
 <?php
 /**
  * 这段代码用来实现并行地轮询多个url 。当某个url返回结果时，能即时再次发起请求。
- * - 借助 curl_multi 的多线程
+ * - 借助 curl_multi
  */
 $url_array = ['http://google.com', 'http://www.baidu.com', 'http://163.com'];
 
