@@ -38,6 +38,7 @@ foreach ($handlers as $h) {
 $running = null; // unused
 do {
     curl_multi_exec($mh, $running);
+    curl_multi_select($mh); // 避免 100% cpu；select 不只在请求返回时才返回
     $info = curl_multi_info_read($mh);
     if ($info) {
         /**
