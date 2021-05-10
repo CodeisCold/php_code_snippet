@@ -1,2 +1,2 @@
-# php_code_snippet
-php代码片段
+# code_snippet
+各种代码片段
