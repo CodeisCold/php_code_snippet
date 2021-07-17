@@ -2,10 +2,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// kmp
 // https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm#Description_of_pseudocode_for_the_search_algorithm
 
 // s 被搜索的字符串；w 要寻找的字符串
-char S[] = "128378164ABACABABA891476376427197281730";
+char S[] = "128378AB164ABACABABA891476376427197281730";
 //char W[] = "123443212311";
 char W[] = "ABACABABA";
 
@@ -27,18 +28,21 @@ int main() {
 
     // 开始匹配
     i = 0;
-    for (j = 0; j < strlen(S); j++) {
+    for (j = 0; j < strlen(S); ) {
         if (S[j] == W[i]) {
             i++;
+            j++;
             if (i == len) {
                 printf("found. index: %d\n", j - len + 1);
                 break;
             }
             continue;
         } else {
-            while (S[j] != W[i] && t[i] > 0) {
-                i = t[i];
-            }
+             i = t[i];
+             if (i < 0) {
+                 i++;
+                 j++;
+             }
         }
     }
 }
